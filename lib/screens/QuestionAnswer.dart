@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healing_app/core/ApplicationConstants.dart';
 import 'package:healing_app/screens/ResultPage.dart';
-import 'package:healing_app/widget/Ebutton.dart';
 import 'package:healing_app/widget/Gtext.dart';
 
 class QuestionAnswer extends StatefulWidget {
@@ -29,7 +28,7 @@ class _QuestionAnswerState extends State<QuestionAnswer> {
     "Was the relationship of your or spouse's grandparents not good",
     "Wheather you had any intimate relationship before or after the marriage",
     "Wheather your spouse had any intimate relationship before or after the marriage",
-    "Wheather you or your spouse was separated from your mother or father during your childhood, even for a day, or you did your schooling in ......",
+    "Wheather you or your spouse was separated from your mother or father during your childhood, even for a day, or you did your schooling in __",
     "If the answers to all these questions are No then please click here"
   ];
   void Result() {

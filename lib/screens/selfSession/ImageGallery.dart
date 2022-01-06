@@ -159,7 +159,7 @@ class _ImageGalleryState extends State<ImageGallery> {
                   },
                   child: Container(
                     child: Image.file(
-                      img!,
+                      img,
                       fit: BoxFit.cover,
                       alignment: Alignment.topCenter,
                     ),

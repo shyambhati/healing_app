@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:healing_app/core/ApplicationConstants.dart';
 import 'package:healing_app/screens/Dashboard.dart';
 import 'package:healing_app/screens/selfSession/ImageGallery.dart';
+import 'package:healing_app/screens/selfSession/Step1.dart';
 import 'package:healing_app/widget/Gtext.dart';
 
 class ResultPage extends StatefulWidget {
@@ -48,8 +49,8 @@ class _ResultPageState extends State<ResultPage> {
                 )),
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => ImageGallery()));
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Step1()));
               },
               child: Container(
                 margin: EdgeInsets.all(10),
@@ -57,13 +58,13 @@ class _ResultPageState extends State<ResultPage> {
                   borderRadius: BorderRadius.circular(30),
                   color: ApplicationConstants.defaultColor,
                 ),
-                height: 50,
+                height: 40,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Gtext(
                       text: "Start Self Process",
-                      size: 25,
+                      size: 20,
                       color: Colors.white,
                     ),
                   ],
