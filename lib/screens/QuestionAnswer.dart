@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healing_app/core/ApplicationConstants.dart';
 import 'package:healing_app/screens/ResultPage.dart';
+import 'package:healing_app/screens/selfSession/ImageGallery.dart';
 import 'package:healing_app/widget/Gtext.dart';
 
 class QuestionAnswer extends StatefulWidget {
@@ -33,6 +34,8 @@ class _QuestionAnswerState extends State<QuestionAnswer> {
   ];
   void Result() {
     Navigator.of(context).push(MaterialPageRoute(builder: (_) => ResultPage()));
+    // Navigator.of(context)
+    //     .push(MaterialPageRoute(builder: (_) => ImageGallery()));
   }
 
   @override

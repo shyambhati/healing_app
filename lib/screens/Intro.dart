@@ -39,21 +39,21 @@ class _IntroState extends State<Intro> {
         PageViewModel(
           title: "Healing App",
           body: "Learn to be calm and you will always be happy",
-          image: _buildImage('assets/budha.png'),
+          image: _buildImage('assets/air_water.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Healing App",
           body:
               "Mediation is not spacing out or running away. In fact, it is being totally honest with ourselves",
-          image: _buildImage('assets/budha.png'),
+          image: _buildImage('assets/air_water.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Healing App",
           body:
               "Mediation is a vital way to purify and quiet the mind, thus rejuvenating the body",
-          image: _buildImage('assets/budha.png'),
+          image: _buildImage('assets/air_water.jpg'),
           decoration: pageDecoration,
         ),
       ],
