@@ -18,8 +18,6 @@ class _ImageGalleryState extends State<ImageGallery> {
   var elevation = 3.0;
   late String name1, name2;
 
-  bool nowView = true;
-
   Future Imagechose(ImageSource Source, int index) async {
     final ima = await ImagePicker().pickImage(source: Source, imageQuality: 50);
 
@@ -167,88 +165,39 @@ class _ImageGalleryState extends State<ImageGallery> {
     else if (index == 6)
       img = _image6;
     else if (index == 7) img = _image7;
-    print("Index is : " + index.toString());
-    return index < 7
-        ? Visibility(
-            key: ValueKey(index),
-            visible: vis[index] == 0 ? true : false,
-            child: Card(
-                elevation: elevation,
-                child: Container(
-                  child: img != null
-                      ? Stack(
-                          children: [
-                            Container(
-                              child: GestureDetector(
-                                onTap: () {
-                                  openBottomSheet(index);
-                                },
-                                child: Container(
-                                  color: Colors.red,
-                                  width: double.infinity,
-                                  child: Image.file(
-                                    img,
-                                    fit: BoxFit.fill,
-                                    width: double.infinity,
-                                    alignment: Alignment.topCenter,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              right: 0,
-                              top: 0,
-                              child: GestureDetector(
-                                onTap: () {
-                                  removeImage(index);
-                                },
-                                child: Container(
-                                  color: Colors.red,
-                                  child: Icon(
-                                    Icons.close,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        )
-                      : IconButton(
-                          onPressed: () {
-                            openBottomSheet(index);
-                          },
-                          icon: Icon(
-                            Icons.image_outlined,
-                            size: 50,
-                            color: Colors.grey,
-                          ),
-                        ),
-                )),
-          )
-        : Container(key: ValueKey(index), child: SizedBox());
+    return Card(
+        key: ValueKey(index),
+        elevation: elevation,
+        child: Container(
+          padding: EdgeInsets.all(5),
+          child: img != null
+              ? GestureDetector(
+                  onTap: () {
+                    openBottomSheet(index);
+                  },
+                  child: Container(
+                    child: Image.file(
+                      img,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
+                    ),
+                  ),
+                )
+              : IconButton(
+                  onPressed: () {
+                    openBottomSheet(index);
+                  },
+                  icon: Icon(
+                    Icons.image_outlined,
+                    size: 50,
+                    color: Colors.grey,
+                  ),
+                ),
+        ));
   }
 
-  removeImage(int index) {
-    setState(() {
-      if (index == 1)
-        image1 = null;
-      else if (index == 2)
-        _image2 = null;
-      else if (index == 3)
-        _image3 = null;
-      else if (index == 4)
-        _image4 = null;
-      else if (index == 5)
-        _image5 = null;
-      else if (index == 6)
-        _image6 = null;
-      else if (index == 7) _image7 = null;
-    });
-  }
+  final data = [1, 2, 3, 4, 5, 6];
 
-  final data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-  final vis = [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1];
   int _task = 0;
   int _heading = 0;
 
@@ -284,15 +233,12 @@ class _ImageGalleryState extends State<ImageGallery> {
     "It’s time to pay Gratitude to the Universe ", // 17 to 22
   ];
   nextTask() {
-    // if (image1 == null ||
-    //     _image2 == null ||
-    //     _image3 == null ||
-    //     _image4 == null ||
-    //     _image5 == null ||
-    //     _image6 == null) {
-    //   _showMyDialog();
-    // }
-    if (image1 == null || _image2 == null) {
+    if (image1 == null ||
+        _image2 == null ||
+        _image3 == null ||
+        _image4 == null ||
+        _image5 == null ||
+        _image6 == null) {
       _showMyDialog();
     } else if (_task < task.length && _task != task.length - 1) {
       setState(() {
@@ -344,30 +290,15 @@ class _ImageGalleryState extends State<ImageGallery> {
     );
   }
 
-  changeViewStatus() {
-    setState(() {
-      if (nowView) {
-        nowView = false;
-        if (image1 == null) vis[1] = 1;
-        if (_image2 == null) vis[2] = 1;
-        if (_image3 == null) vis[3] = 1;
-        if (_image4 == null) vis[4] = 1;
-        if (_image5 == null) vis[5] = 1;
-        if (_image6 == null) vis[6] = 1;
-      } else {
-        nowView = true;
-        vis[1] = 0;
-        vis[2] = 0;
-        vis[3] = 0;
-        vis[4] = 0;
-        vis[5] = 0;
-        vis[6] = 0;
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    Widget buildItem(String text) {
+      return Card(
+        key: ValueKey(text),
+        child: Text(text),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -375,47 +306,10 @@ class _ImageGalleryState extends State<ImageGallery> {
         // automaticallyImplyLeading: false,
         backgroundColor: Colors.red,
       ),
-      // floatingActionButton: FloatingActionButton(
-      //     child: Container(
-      //       width: 60,
-      //       height: 60,
-      //       child: Icon(Icons.arrow_forward),
-      //       decoration: BoxDecoration(
-      //           shape: BoxShape.circle,
-      //           color: ApplicationConstants.defaultColor),
-      //     ),
-      //     onPressed: () {
-      //       nextTask();
-      //     }),
-
-      floatingActionButton:
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Container(
-          margin: EdgeInsets.only(left: 30),
-          child: FloatingActionButton(
-            heroTag: "btn1",
-            onPressed: () => {changeViewStatus()},
-            child: Icon(nowView ? Icons.visibility : Icons.visibility_off),
-          ),
-        ),
-        FloatingActionButton(
-          heroTag: "btn2",
-          onPressed: () => {nextTask()},
-          child: Container(
-            width: 60,
-            height: 60,
-            child: Icon(Icons.arrow_forward),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: ApplicationConstants.defaultColor),
-          ),
-        ),
-      ]),
-
       body: Column(
         children: [
           Expanded(
-            flex: 7,
+            flex: 5,
             child: ReorderableGridView.count(
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
@@ -430,33 +324,51 @@ class _ImageGalleryState extends State<ImageGallery> {
             ),
           ),
           Flexible(
-              flex: 3,
-              child: Container(
-                height: double.infinity,
-                child: Card(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Gtext(
-                          text: heading[_heading],
+              flex: 5,
+              child: Card(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Gtext(
+                      text: heading[_heading],
+                      size: 23,
+                      textAlign: TextAlign.center,
+                      color: Colors.red,
+                    ),
+                    Divider(),
+                    Center(
+                      child: Gtext(
+                          text: task[_task],
                           size: 20,
                           textAlign: TextAlign.center,
-                          color: Colors.red,
-                        ),
-                        Divider(),
-                        Center(
-                          child: Gtext(
-                              text: task[_task],
-                              size: 18,
-                              textAlign: TextAlign.center,
-                              color: ApplicationConstants.defaultColor),
-                        ),
-                      ],
+                          color: ApplicationConstants.defaultColor),
                     ),
-                  ),
+                  ],
                 ),
               )),
+          GestureDetector(
+            onTap: () {
+              nextTask();
+            },
+            child: Container(
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: ApplicationConstants.defaultColor,
+              ),
+              height: 40,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Gtext(
+                    text: "Continue",
+                    size: 20,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

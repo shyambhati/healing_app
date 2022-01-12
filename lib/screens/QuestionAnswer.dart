@@ -33,9 +33,9 @@ class _QuestionAnswerState extends State<QuestionAnswer> {
     "If the answers to all these questions are No then please click here"
   ];
   void Result() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) => ResultPage()));
-    // Navigator.of(context)
-    //     .push(MaterialPageRoute(builder: (_) => ImageGallery()));
+    //Navigator.of(context).push(MaterialPageRoute(builder: (_) => ResultPage()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => ImageGallery()));
   }
 
   @override
