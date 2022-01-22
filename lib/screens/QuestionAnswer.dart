@@ -23,14 +23,14 @@ class _QuestionAnswerState extends State<QuestionAnswer> {
   }
 
   var question = [
-    "Was your or your spouse's parents relation with eeach other not good",
-    "Wash your relation with any of your parent not good",
-    "Was your spouse relation with any of their parent not good",
-    "Was the relationship of your or spouse's grandparents not good",
-    "Wheather you had any intimate relationship before or after the marriage",
-    "Wheather your spouse had any intimate relationship before or after the marriage",
-    "Wheather you or your spouse was separated from your mother or father during your childhood, even for a day, or you did your schooling in __",
-    "If the answers to all these questions are No then please click here"
+    "Was your or your spouse's parents relation with each other not good ?",
+    "Was your relation with any of your parent bad ?",
+    "Was your spouse relation with any of their parent bad ?",
+    "Was the relationship of your or spouse's grandparents bad ?",
+    "Wheather you had any intimate relationship before or after the marriage ?",
+    "Wheather your spouse had any intimate relationship before or after the marriage ?",
+    "Wheather you or your spouse was separated from your mother or father during your childhood, even for a day, or you did your schooling in __ ?",
+    "If the answers to all these questions are No then please click here ?"
   ];
   void Result() {
     //Navigator.of(context).push(MaterialPageRoute(builder: (_) => ResultPage()));
